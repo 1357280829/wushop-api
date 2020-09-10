@@ -65,6 +65,12 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'admin' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'visibility' => 'public',
+            'url' => env('APP_URL') . '/uploads',
+        ],
     ],
 
     /*
@@ -79,7 +85,9 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+//        public_path('storage') => storage_path('app/public'),
+        //  api 和 admin 两个项目共享文件
+        public_path('uploads') => \Illuminate\Support\Str::replaceFirst('api', 'admin', public_path('uploads')),
     ],
 
 ];

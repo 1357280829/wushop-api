@@ -4,6 +4,7 @@
 /storage/*.key
 /vendor
 /.idea
+/public/uploads
 
 dump.rdb
 showdoc_api.sh
