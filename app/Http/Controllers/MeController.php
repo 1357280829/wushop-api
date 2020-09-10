@@ -15,11 +15,42 @@ use Overtrue\EasySms\EasySms;
 
 class MeController extends Controller
 {
+    /**
+     * showdoc
+     * @catalog 接口/我的个人信息
+     * @title 查看我的个人信息
+     * @description 暂无
+     * @method  get
+     * @url  /me
+     * @param
+     * @return {}
+     * @return_param me object 我的个人信息&nbsp;[参考](http://showdoc.deepack.top/web/#/4?page_id=47)
+     * @remark 暂无
+     * @number 1
+     */
     public function index()
     {
         return $this->res(CustomCode::Success, ['me' => me()]);
     }
 
+    /**
+     * showdoc
+     * @catalog 接口/我的个人信息
+     * @title 修改我的个人信息
+     * @description 暂无
+     * @method  post
+     * @url  /me
+     * @param nickname 可选 string 用户昵称
+     * @param avatar_url 可选 string 用户头像url
+     * @param phone 可选 string 手机号
+     * @param phone_bind_type 可选(phone不为空时必选) number 手机号绑定方式;1:微信绑定,2:短信验证码绑定
+     * @param verification_code_key 可选(phone_bind_type为2时必选) string 短信验证码索引
+     * @param verification_code 可选(phone_bind_type为2时必选) string 短信验证码
+     * @return {}
+     * @return_param
+     * @remark 暂无
+     * @number 1
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -52,7 +83,20 @@ class MeController extends Controller
         return $this->res();
     }
 
-    //  新增短信验证码
+    /**
+     * showdoc
+     * @catalog 接口/我的个人信息
+     * @title 发送短信验证码
+     * @description 暂无
+     * @method  post
+     * @url  /me/verification-code
+     * @param phone 必选 string 手机号
+     * @return {}
+     * @return_param verification_code_key string 短信验证码索引
+     * @return_param expired_at date 过期时间
+     * @remark 暂无
+     * @number 1
+     */
     public function verificationCodeStore(Request $request, EasySms $easySms)
     {
         $request->validate([

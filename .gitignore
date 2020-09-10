@@ -5,6 +5,7 @@
 /vendor
 /.idea
 
+showdoc_api.sh
 .env
 .env.backup
 .phpunit.result.cache
