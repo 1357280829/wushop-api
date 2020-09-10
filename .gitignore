@@ -5,6 +5,7 @@
 /vendor
 /.idea
 
+dump.rdb
 showdoc_api.sh
 .env
 .env.backup
