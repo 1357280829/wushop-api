@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
 
 class TestsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        print_r(me());
+        $aaa = 333;
+
+        print_r($aaa);
         exit();
     }
 }

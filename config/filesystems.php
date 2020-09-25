@@ -86,7 +86,7 @@ return [
 
     'links' => [
 //        public_path('storage') => storage_path('app/public'),
-        //  api 和 admin 两个项目共享文件
+        //  api 和 admin 两个项目共享uploads文件夹
         public_path('uploads') => \Illuminate\Support\Str::replaceFirst('api', 'admin', public_path('uploads')),
     ],
 

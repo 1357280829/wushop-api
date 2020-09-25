@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Traits\AuthenticatedWechatUsers;
+namespace App\Http\Controllers\Traits\AuthenticatedWechatUser;
 
-use App\Enums\CustomCode;
 use App\Exceptions\CustomException;
 use App\Handlers\CustomTokenHandler;
 use App\Models\WechatUser;

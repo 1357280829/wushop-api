@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use App\Enums\CustomCode;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
@@ -59,7 +60,10 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof ModelNotFoundException) {
-            throw new CustomException(explode('\\', $exception->getModel())[2] . ' 模型不存在');
+            if (App::environment('local')) {
+                throw new CustomException(explode('\\', $exception->getModel())[2] . ' 模型不存在');
+            }
+            throw new CustomException('非法操作');
         }
 
         return parent::render($request, $exception);

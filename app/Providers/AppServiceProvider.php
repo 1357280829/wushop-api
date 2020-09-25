@@ -14,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('custom_token', function () {
-            return new CustomTokenHandler();
-        });
+        //
     }
 
     /**
