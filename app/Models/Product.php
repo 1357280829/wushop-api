@@ -33,6 +33,12 @@ class Product extends Model
         return $this->hasMany(ProductSku::class, 'product_id', 'id');
     }
 
+    //  商品规格类型
+    public function productParamTypes()
+    {
+        return $this->belongsToMany(ProductParamType::class, 'product_product_param_type_relations');
+    }
+
     //  查询简要字段
     public function scopeSelectBrief(Builder $query)
     {

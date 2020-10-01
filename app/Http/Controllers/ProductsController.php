@@ -65,7 +65,12 @@ class ProductsController extends Controller
             throw new CustomException('商品未上架');
         }
 
-        $product->load(['categories','productSkus']);
+        $product->load([
+            'categories',
+            'productSkus',
+            'productParamTypes',
+            'productParamTypes.productParams:id,name,product_param_type_id',
+        ]);
 
         ProductSku::appendProductParams($product->productSkus);
 

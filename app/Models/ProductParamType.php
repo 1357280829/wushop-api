@@ -11,4 +11,10 @@ class ProductParamType extends Model
     protected $fillable = [
         'name',
     ];
+
+    //  商品规格
+    public function productParams()
+    {
+        return $this->hasMany(ProductParam::class);
+    }
 }
