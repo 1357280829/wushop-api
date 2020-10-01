@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\CustomCode;
 use App\Exceptions\CustomException;
 use App\Models\Product;
+use App\Models\ProductSku;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -65,6 +66,8 @@ class ProductsController extends Controller
         }
 
         $product->load(['categories','productSkus']);
+
+        ProductSku::appendProductParams($product->productSkus);
 
         return $this->res(CustomCode::Success, [
             'product' => $product,
